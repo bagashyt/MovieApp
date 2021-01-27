@@ -23,13 +23,12 @@ android {
     buildTypes {
         debug {
             buildConfigField 'String', "GithubAPIToken", GITHUB_API_TOKEN
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled false
+
         }
         release {
             buildConfigField 'String', "GithubAPIToken", GITHUB_API_TOKEN
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled false
         }
     }
     compileOptions {
