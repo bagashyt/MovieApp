@@ -8,6 +8,8 @@ import com.bagas.core.data.source.remote.RemoteDataSource
 import com.bagas.core.data.source.remote.network.ApiService
 import com.bagas.core.domain.repository.IMovieAppRepository
 import com.bagas.core.utils.AppExecutors
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -20,10 +22,14 @@ import java.util.concurrent.TimeUnit
 val databaseModule = module {
     factory { get<MovieDatabase>().movieDao() }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("bagas".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             MovieDatabase::class.java, "movie.db"
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 
