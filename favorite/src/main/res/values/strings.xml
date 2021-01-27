@@ -4,9 +4,6 @@
     <string name="tvshows">Tv Shows</string>
     <string name="message_undo">Batalkan menghapus item favorite?</string>
     <string name="message_ok">OK</string>
-    <string name="notfound">notFound</string>
     <string name="title_favorite">Favorite</string>
     <string name="no_data">You Don\'t have favorite</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
